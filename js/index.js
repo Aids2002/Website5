@@ -1,4 +1,4 @@
-import { db, auth } from './firebase.js';
+// const { db, auth } = require('./firebase.js');
 
 //=======================================(js for index.html)=======================================
 const getSearchContainer = document.querySelector('#searchContainer')
