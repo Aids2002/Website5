@@ -1,0 +1,189 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/styles/app.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/icons.css">
+    <link rel="stylesheet" href="/styles/showcase.css">
+    <link rel="stylesheet" href="/styles/loginUI.css">
+    <script src="/js/firebase.js"></script>
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
+    <section id="whiteSection" class="whiteSection">
+        <section class="topSection">               
+            <div id="logoContainer">
+                <img src="/Pictures/Component 34.png">
+            </div>
+            <div >
+                <div  class="topOptions">
+                    <button class="navText font-16 buttonText">Rent</button>
+                    <button class="navText font-16 buttonText" disabled>Feedbacks</button>
+                    <button class="navText font-16 buttonText" disabled>Services</button>
+                </div>
+            </div>
+            <div id="loginContainer">
+                <button id="loginButton">
+                    <img src="/Pictures/login.png">
+                </button>
+            </div>              
+        </section>
+        <section class="topContentContainer">
+            
+            <section class="persuasiveText">
+                <p id="pText">
+                    An easy way to find your preferred <span class="colorOrange">boarding house</span>
+                </p>
+            </section>
+            <div id="searchContainer">
+                <section id="subSearchContainer">
+                    <button class="text" id="location"><p>Location<br><span>Search nearby area</p></span></button>
+                    <button class="text" id="pricing"><p>Pricing<br><span>Choose the room’s cost range</p></span></button>
+                    <button class="text" id="orientation"><p>Room Orientation<br><span>Choose a room scheme</p></span></button>
+                    <button id="searchIconContainer">
+                        <img src="/Pictures/Search.png">
+                    </button>
+                </section>
+            </div>
+            <section id ="iconsSection">
+                <section class="iconsContainer">
+                    <div id="icon1" class="subIconsContainer" >
+                        <img class="imageSize" alt="starIcon" name="starIcon" src="/Pictures/Star 1.png">
+                        <button > Favorites</buttton>
+                    </div>
+                    <div id="icon2" class="subIconsContainer">
+                        <img class="imageSize" alt="AC Icon" value="AC"name="Icon" src="/Pictures/AC 1.png">
+                        <button disabled>Air-con</button>
+                    </div>
+                    <div id="icon3" class="subIconsContainer">
+                        <img class="imageSize" alt="Convenience Icon" name="convenience" src="/Pictures/Convenience 1.png">
+                        <button disabled> Store</button>
+                    </div>   
+                    <div id="icon4" class="subIconsContainer">
+                        <img class="imageSize" alt="AC Icon" value="AC"name="Icon" src="/Pictures/AC 1.png">
+                        <button disabled>Air-con</button>
+                    </div>
+                    <div id="icon5" class="subIconsContainer">
+                        <img class="imageSize" alt="Convenience Icon" name="convenience" src="/Pictures/Convenience 1.png">
+                        <button disabled> Store</button>
+                    </div>  
+                    <div id="icon6" class="subIconsContainer">
+                        <img class="imageSize" alt="AC Icon" value="AC"name="Icon" src="/Pictures/AC 1.png">
+                        <button disabled>Air-con</button>
+                    </div>
+                    <div id="icon7" class="subIconsContainer">
+                        <img class="imageSize" alt="Convenience Icon" name="convenience" src="/Pictures/Convenience 1.png">
+                        <button disabled> Store</button>
+                    </div>  
+                    <div id="icon8" class="subIconsContainer">
+                        <img class="imageSize" alt="AC Icon" value="AC"name="Icon" src="/Pictures/AC 1.png">
+                        <button disabled>Air-con</button>
+                    </div>
+                    <div id="icon9" class="subIconsContainer">
+                        <img class="imageSize" alt="Convenience Icon" name="convenience" src="/Pictures/Convenience 1.png">
+                        <button disabled> Store</button>
+                    </div>  
+                    <div id="icon10" class="subIconsContainer">
+                        <img class="imageSize" alt="AC Icon" value="AC"name="Icon" src="/Pictures/AC 1.png">
+                        <button disabled>Air-con</button>
+                    </div>
+                    <div id="icon11" class="subIconsContainer">
+                        <img class="imageSize" alt="Convenience Icon" name="convenience" src="/Pictures/Convenience 1.png">
+                        <button disabled> Store</button>
+                    </div>  
+                    <div id="icon12" class="subIconsContainer">
+                        <img class="imageSize" alt="Convenience Icon" name="convenience" src="/Pictures/Convenience 1.png">
+                        <button disabled> Store</button>
+                    </div>  
+                    <!--  
+                    <div id="icon6" class="subIconsContainer">
+                        <img class="imageSize" alt="Convenience Icon" name="convenience" src="Pictures/Convenience 1.png">
+                        <button disabled> Store</button>
+                    </div>   
+                    <div id="icon7" class="subIconsContainer">
+                        <img class="imageSize" alt="AC Icon" value="AC"name="Icon" src="Pictures/AC 1.png">
+                        <button disabled>Air-con</button>
+                    </div>
+                    <div id="icon8" class="subIconsContainer">
+                        <img class="imageSize" alt="Convenience Icon" name="convenience" src="Pictures/Convenience 1.png">
+                        <button disabled> Store</button>
+                    </div>    -->
+                    
+                    
+
+                </section>
+                <section class="iconToggle"> 
+                    <button class="option" >
+                        <img src="/Pictures/Vector 9.png" alt="">
+                    </button>
+                    <button class="option" id="options">
+                        <img src="/Pictures/burger.png">
+                        <p>Options</p>
+                    </button>
+                </section>
+            </section>
+        </section>
+        <div class="line">
+
+        </div>
+    </section>
+    <section class="brownSection">
+        <section class="houseContainer">
+            <section class="houses">
+                <img class="houseImage" src="/Pictures/imag-2.jpg" alt="">
+                <p>
+                    asdasda
+                </p>
+            </section>
+            <section id="house2" class="houses">
+                <img class="houseImage" src="/Pictures/image-3.jpg" alt="">
+                <p>
+                    house 2
+                </p>
+            </section>  
+            <section id="house3" class="houses">
+                <img class="houseImage" src="/Pictures/image-4.jpg" alt="">
+                <p>
+                    house 3
+                </p>
+            </section> 
+            <section id="house4" class="houses">
+                <img class="houseImage" src="/Pictures/image-5.jpg" alt="">
+                <p>
+                    house 3
+                </p>
+            </section> 
+            <section id="house5" class="houses">
+                <img class="houseImage" src="/Pictures/image-1.jpg" alt="">
+                <p>
+                    house 3
+                </p>
+            </section> 
+        </section> 
+    </section>
+    <section class="footer">
+        <div class="footerBackground">
+            <button  id="rent">
+                <div class="orange ">
+                    <img  src="/Pictures/image 21 (1).png" alt="">
+                </div>
+            </button>
+            <button id="feedback" class="lightBrown">
+                <div class="orange bottomOrange">
+                    <img src="/Pictures/image 23 (1).png" alt="">
+                </div>
+            </button>
+            <button id="Services" class="lightBrown">
+                <div class="orange">
+                    <img src="/Pictures/image 22 (1).png" alt="">
+                </div>
+            </button>
+        </div>
+    </section>
+    <script src="/js/index.js"></script>
+</body>
+</html>
