@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function() {
     button.addEventListener('click', function(event) {
         // Prevent the default button click behavior
         event.preventDefault();
-        console.log('pressed')
+        console.log('pressed');
 
          
     // })
