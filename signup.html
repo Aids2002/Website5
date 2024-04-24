@@ -1,0 +1,82 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="signup.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
+    <script src="firebase.bundle.js"></script>
+</head>
+<body>
+    <section id="orderOne" class="cont orderOne">
+        <section class="whiteSection">
+            <div class="logoCont">
+                <img src="/Pictures/logo.png" alt="page Logo">
+                <p>Create your account</p>
+                <button id ="whiteClose"class="loginCloseButton">
+                    <img  src="/Pictures/Subtract.png">
+                </button>
+            </div>
+            <form id="signUpForm">
+                    <div class="suInputForm">
+                        <p>Email Address</p>
+                        <input type="text" placeholder="johndoe@gmail.com">
+                    </div>
+                    <div class="suInputForm">
+                        <p>Password</p>
+                        <input type="password" placeholder="Enter your password">   
+                    </div>
+                    <div class="suInputForm">
+                        <p>Number</p>
+                        <input type="number" placeholder="Enter your phone number"> 
+                    </div>  
+                    <button>Continue</button>
+            </form>
+            <div class="lineCont">
+                <div class="lines"></div>
+                <div>or</div>
+                <div class="lines"></div>
+            </div>
+            <div class="apiContainer">
+                <button id="fb"> 
+                    <img src="/Pictures/path14.png">
+                    <p>Sign Up with Facebook</p>
+                </button>
+                <button id="google">
+                    <img src="/Pictures/Google Logo.png">
+                    <p>Sign Up with Google</p>
+                </button>
+            </div>
+        </section>
+        
+    </section>
+    <section id="orderTwo" class="orangeSection orderTwo">
+        <button id ="orangeCloseButton" class="loginCloseButton">
+            <img  src="/Pictures/Subtract.png">
+        </button>
+        <div class="orangeContainer">
+            <section class="textLine">
+                <h1>Weclome to <span class="whiteText">Boarding Buddy</span></h1>
+                <p id="pSec">We assist in locating boarding houses and scout their facilities and services so you don’t have to.</p>
+            </section>
+            <section class="imgLines">
+                <img id="businessMan" src="/Pictures/business-man 1.png" alt="asdada">
+                <img id="dotDot" src="/Pictures/Component 21.png">
+                <img id="house" src="/Pictures/house 1.png">
+            </section>
+        </div>
+        <div class="indicator">
+            <p>
+                Register Below
+            </p> 
+            <img src="/Pictures/downwardArrow.png" alt="">
+        </div>
+    </section>
+    <script src="signup.bundle.js"></script>
+</body>
+</html>
