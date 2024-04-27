@@ -2,18 +2,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Bbuddy</title>
     <link rel="stylesheet" href="/styles/app.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/styles/icons.css">
-    <link rel="stylesheet" href="/styles/showcase.css">
-    <link rel="stylesheet" href="/styles/loginUI.css">
-    <script src="firebase.bundle.js"></script>
 </head>
 <body>
-    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
     <section id="whiteSection" class="whiteSection">
         <section class="topSection">               
             <div id="logoContainer">
@@ -30,10 +25,9 @@
                 <button id="loginButton">
                     <img src="/Pictures/login.png">
                 </button>
-            </div>              
+            </div>
         </section>
-        <section class="topContentContainer">
-            
+        <section class="topContentContainer">           
             <section class="persuasiveText">
                 <p id="pText">
                     An easy way to find your preferred <span class="colorOrange">boarding house</span>
@@ -44,6 +38,51 @@
                     <button class="text" id="location"><p>Location<br><span>Search nearby area</p></span></button>
                     <button class="text" id="pricing"><p>Pricing<br><span>Choose the room’s cost range</p></span></button>
                     <button class="text" id="orientation"><p>Room Orientation<br><span>Choose a room scheme</p></span></button>
+                    <div class="locationModal">
+                        <button id="searchButtonContainer">
+                            <img src="/Pictures/Subtract.png" alt="">
+                        </button>
+                        <form >
+                            <div id="locationForm">
+                                <input class="specificSearch" type="text" placeholder="Search Location">
+                                <select name="location" id="locationSearch">
+                                <option value="Tumaga">Tumaga</option>
+                                <option value="Santa Maria">Santa Maria</option>
+                                <option value="Tugbungan">Tugbungan</option>
+                                <option value="Ayala">Ayala</option>
+                                <option value="Baliwasan">Baliwasan</option>
+                                <option value="Canelar">Canelar</option>
+                                <option value="Arena Blanco">Arena Blanco</option>
+                                <option value="Tumaga">Divisoria</option>
+                                <option value="Tumaga">Cabatangan</option>
+                                <option value="Pasonanca">Pasonanca</option>
+                                <option value="San Roque">San Roque</option>
+                                <option value="Recodo">Recodo</option>
+                            </select>
+                            </div>
+                            <div id="locationForm">
+                                <h1 class="specificSearch">Pricing</h1>
+                                <select name="location" id="locationSearch">
+                                    <option value="low">Lowest to Highest</option>
+                                    <option value="high">Highest to Lowest</option>
+                                </select>
+                            </div>
+                            <div id="locationForm">
+                                <h1 class="specificSearch">Room Orientation</h1>
+                                <select name="location" id="locationSearch">
+                                    <option value="bedSpacer">Bed Spacer</option>
+                                    <option value="single">Single Bedroom</option>
+                                    <option value="double">Double Bedroom</option>
+                                </select>
+                            </div>
+                            <div id="locationForm">
+                                <div id="buttonContainer">
+                                    <button id="searchBoard">Search</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    
                     <button id="searchIconContainer">
                         <img src="/Pictures/Search.png">
                     </button>
@@ -57,63 +96,48 @@
                     </div>
                     <div id="icon2" class="subIconsContainer">
                         <img class="imageSize" alt="AC Icon" value="AC"name="Icon" src="/Pictures/AC 1.png">
-                        <button disabled>Air-con</button>
+                        <button class="gray">Air-con</button>
                     </div>
                     <div id="icon3" class="subIconsContainer">
                         <img class="imageSize" alt="Convenience Icon" name="convenience" src="/Pictures/Convenience 1.png">
-                        <button disabled> Store</button>
+                        <button class="gray"> Store</button>
                     </div>   
                     <div id="icon4" class="subIconsContainer">
                         <img class="imageSize" alt="AC Icon" value="AC"name="Icon" src="/Pictures/AC 1.png">
-                        <button disabled>Air-con</button>
+                        <button class="gray">Air-con</button>
                     </div>
                     <div id="icon5" class="subIconsContainer">
                         <img class="imageSize" alt="Convenience Icon" name="convenience" src="/Pictures/Convenience 1.png">
-                        <button disabled> Store</button>
+                        <button class="gray"> Store</button>
                     </div>  
                     <div id="icon6" class="subIconsContainer">
                         <img class="imageSize" alt="AC Icon" value="AC"name="Icon" src="/Pictures/AC 1.png">
-                        <button disabled>Air-con</button>
+                        <button class="gray">Air-con</button>
                     </div>
                     <div id="icon7" class="subIconsContainer">
                         <img class="imageSize" alt="Convenience Icon" name="convenience" src="/Pictures/Convenience 1.png">
-                        <button disabled> Store</button>
+                        <button class="gray"> Store</button>
                     </div>  
                     <div id="icon8" class="subIconsContainer">
                         <img class="imageSize" alt="AC Icon" value="AC"name="Icon" src="/Pictures/AC 1.png">
-                        <button disabled>Air-con</button>
+                        <button class="gray">Air-con</button>
                     </div>
                     <div id="icon9" class="subIconsContainer">
                         <img class="imageSize" alt="Convenience Icon" name="convenience" src="/Pictures/Convenience 1.png">
-                        <button disabled> Store</button>
+                        <button class="gray"> Store</button>
                     </div>  
                     <div id="icon10" class="subIconsContainer">
                         <img class="imageSize" alt="AC Icon" value="AC"name="Icon" src="/Pictures/AC 1.png">
-                        <button disabled>Air-con</button>
+                        <button class="gray">Air-con</button>
                     </div>
                     <div id="icon11" class="subIconsContainer">
                         <img class="imageSize" alt="Convenience Icon" name="convenience" src="/Pictures/Convenience 1.png">
-                        <button disabled> Store</button>
+                        <button class="gray"> Store</button>
                     </div>  
                     <div id="icon12" class="subIconsContainer">
                         <img class="imageSize" alt="Convenience Icon" name="convenience" src="/Pictures/Convenience 1.png">
-                        <button disabled> Store</button>
+                        <button class="gray"> Store</button>
                     </div>  
-                    <!--  
-                    <div id="icon6" class="subIconsContainer">
-                        <img class="imageSize" alt="Convenience Icon" name="convenience" src="Pictures/Convenience 1.png">
-                        <button disabled> Store</button>
-                    </div>   
-                    <div id="icon7" class="subIconsContainer">
-                        <img class="imageSize" alt="AC Icon" value="AC"name="Icon" src="Pictures/AC 1.png">
-                        <button disabled>Air-con</button>
-                    </div>
-                    <div id="icon8" class="subIconsContainer">
-                        <img class="imageSize" alt="Convenience Icon" name="convenience" src="Pictures/Convenience 1.png">
-                        <button disabled> Store</button>
-                    </div>    -->
-                    
-                    
 
                 </section>
                 <section class="iconToggle"> 
@@ -128,7 +152,6 @@
             </section>
         </section>
         <div class="line">
-
         </div>
     </section>
     <section class="brownSection">
@@ -168,18 +191,27 @@
     <section class="footer">
         <div class="footerBackground">
             <button  id="rent">
-                <div class="orange ">
+                <div class="orange bottomOrange ">
                     <img  src="/Pictures/image 21 (1).png" alt="">
+                </div>
+                <div class="subText">
+                    Rent
                 </div>
             </button>
             <button id="feedback" class="lightBrown">
-                <div class="orange bottomOrange">
+                <div class="orange">
                     <img src="/Pictures/image 23 (1).png" alt="">
                 </div>
+                <div class="subText">
+                    Feedbacks
+                </div>
             </button>
-            <button id="Services" class="lightBrown">
+            <button id="services" class="lightBrown">
                 <div class="orange">
                     <img src="/Pictures/image 22 (1).png" alt="">
+                </div>
+                <div class="subText">
+                    Services
                 </div>
             </button>
         </div>
