@@ -1,0 +1,292 @@
+body, img,h1,h2,h3,h4,button,p{
+    margin:0;
+    padding: 0;
+}
+.topOptions{
+    display:none;
+}
+button{
+    cursor:pointer;
+}
+body{
+    display:flex;
+    flex-direction: column;
+    height:100vh;
+    background-color: FBAD15;
+    font-family: Outfit,sans-serif;
+}
+.container{
+    align-self: top;
+    padding-top:5vh;
+    width:100%;
+    background-color: white;
+    display:flex;
+    flex-direction: column;
+    min-height:95vh;
+    box-shadow: 0px 4px 5px 0px rgba(0,0,0,0.25);
+    -webkit-box-shadow: 0px 4px 6px 0px rgba(167, 167, 167, 0.25);
+    -moz-box-shadow: 0px 4px 6px 0px rgba(107, 105, 105, 0.25);
+}
+.navbar{
+    display:flex;
+    flex-direction: row;
+    width:90%;
+    justify-content: space-between;
+    align-items: center;
+    align-self: center;
+    cursor: pointer;
+}
+.textContainer{
+    width:90%;
+    align-self: center;
+    display:flex;
+    flex-direction: column;
+    text-align: center;
+    flex-grow:1;
+    flex-shrink:2;
+}
+.textContainer h1{
+   display:inline-block;
+   font-size:16px;
+   line-height:50px;
+   max-width:625px;
+   align-self:center;
+   flex-shrink: 0;
+}
+.textContainer h2{
+    font-size:40px;
+}
+h2 span{
+    color:FBAD15;
+}
+#webLogo{
+    min-width:160px;
+    max-height:30px;
+    align-self:bottom;
+    vertical-align: middle;
+}
+.imageContainer{
+    flex-grow:1;
+    display:flex;
+    width:70%;
+    align-self:center;
+    justify-content: center;
+    margin-top:5vh;
+    flex-shrink:2;
+}
+.imageContainer img{
+    object-fit: contain;
+    width:90%;
+    max-height:370px;
+}
+.bottomContainer{
+    min-height:95vh;
+    padding-top:5vh;
+    width:100%;
+    display:flex;
+    flex-direction: column;
+    background-image: url("/Pictures/5153670.jpg");
+    background-size: contain;
+}
+.arrowContainer{
+    flex-shrink:0;
+    width:25px;
+    height:25px;
+    align-self: center;
+    margin-bottom:5px;
+    background-color: white;
+    border:none;
+}
+
+.arrowContainer img{
+    width:100%;
+    height:100%;
+}
+.feedbacksContainer{
+    width:90%;
+    align-self:center;
+    display:flex;
+    flex-direction: column;
+    background-color: rgba(255,255,255,0.8);
+    height:90%;
+    border-radius:10px;
+    padding-top:4vh;
+    align-content: space-between;
+    position: relative;
+}
+.types{
+    width:90%;
+    align-self: center;
+    display:flex;
+    flex-direction: column;
+}
+.selectType{
+    width:100%;
+    align-self:center;
+    display:flex;
+    flex-direction: column;
+}
+label,p{
+    font-size:14px;
+    font-weight: bold;
+}
+label{
+    margin-bottom:10px;
+}
+p{
+    display:flex;
+    text-align: left;
+    align-self: center;
+    flex:1;
+    color:A4A4A4;
+    border-right: 1px solid;
+    height:40px;
+    align-items: center;
+}
+.selectType button{
+    background-color: white;
+    border:1px solid black;
+    border-radius:10px;
+    height:54px;
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left:15px;
+}
+.imageSize{
+    height:16px;
+    width:20px;
+    padding:0px 17px;
+    z-index: 200;
+}
+.selectType:nth-of-type(2){
+    margin-top:4vh;
+}
+.elaborate{
+    flex:1;
+    margin-top:4vh; 
+}
+#elaborateText{
+    flex-grow:2;
+    max-height:210px;
+    min-height:30vh;
+    border:1px solid black;
+    border-radius:10px;
+    align-items: start;
+    display:flex;
+    position:relative;
+}
+#elaborateText::placeholder{
+    position:absolute;
+    top:10px;
+    left:10px;
+}
+#feedbackSubmitButton{
+    height:40px;
+    width:105px;
+    background-color:rgb(56, 55, 55);
+    color:white;
+    background-size:contain;
+    border-radius:10px;
+    font-size:16px;
+    font-weight:bold;
+    border:1px solid black;
+    align-self:end;
+}
+.feedbackSubmitButtonContainer{
+    width:90%;
+    display:flex;
+    align-self:center;
+    padding-bottom:4vh;
+    justify-content: flex-end;
+}
+#arrowImage {
+    cursor: pointer;
+    transition:all 0.2s;
+}
+#arrowImage:hover {
+    transform: translateY(4px);
+}
+.footer{
+    flex-shrink: 0;
+    flex-grow:1;
+    align-self:center;
+    display:none;
+    align-content: flex-start;
+    justify-content: center;
+    min-height:41px;
+    position: fixed;
+    bottom:0;
+    z-index: 111;
+    transition:0.6s;
+    margin-bottom:10px;
+    box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.50);
+    -webkit-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.50);
+    -moz-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.50);
+    border-radius:10px;
+}
+.footerBackground{
+    flex:1;
+    display:flex;
+    align-self:flex-end;
+    min-width:200px;
+    min-height:40px;
+    border-radius: 10px;
+    background-color: rgba(255,255,255,0);
+}
+.footerBackground button{
+    min-height:50px;
+    flex:1;
+    border:none;
+    display:flex;
+    justify-content: center;
+    background-color: rgba(255,255,255,0.1);
+}
+.footerBackground button img{
+    align-self:center;
+}
+#rent{
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    background-color: rgb(248, 248, 248,0.2);
+
+}
+#services{
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    background-color: rgb(248, 248, 248,0.2);
+
+
+}
+#feedback{
+    /* border-left:1px solid gray;
+    border-right:1px solid gray; */
+    background-color: rgb(248, 248, 248,0.2);
+}
+.orange{
+    align-self: center;
+    display:flex;
+    border-radius:10px;
+    height:35px;
+    width:40px;
+    justify-content: center;
+    background-color: white;
+    box-shadow: 0px 2px 6px 0px rgba(0,0,0,0.50);
+    -webkit-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.50);
+    -moz-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.50);
+}
+.bottomOrange{
+    border-bottom: 3px solid rgb(128,87,54);
+    box-shadow: 0px 2px 6px 0px rgba(0,0,0,0.50);
+    -webkit-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.50);
+    -moz-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.50);
+}
+.subText{
+    display:none;
+}
+#rent:hover .subtext,#services:hover .subtext, #feedback:hover .subtext{
+    display:inline;
+    position: absolute;
+    top:-20;
+    z-index:200;
+}

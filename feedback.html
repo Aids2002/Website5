@@ -1,0 +1,102 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bbuddy</title>
+    <link rel="stylesheet" href="styles/feedback.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <nav class="navbar">               
+            <div class="navbar-brand"id="logoContainer">
+                <img class="navbar-item" src="Pictures/logo.png">
+            </div>
+            <div class="loginContainer" id="loginContainer">
+                <img class ="nav-item" src="Pictures/login.png">
+            </div>
+        </nav>
+        <div class="imageContainer">
+            <img src="Pictures/5484597.jpg" alt="">
+        </div>
+        <div class="textContainer">
+            
+            <h1>
+                <!-- <div id="firstH">Join the </div><span ><img id="webLogo"src="Pictures/logo.png"></span><div id="secondH">community today and help us improve our web page by leaving a feedback</div> -->
+                Join the<span ><img id="webLogo"src="Pictures/logo.png"></span>
+                community today and help us improve our web page by leaving a feedback
+            </h1>
+            <button class="arrowContainer">
+                <img id="arrowImage" src="Pictures/downwardArrow.png" >
+            </button>
+        </div>
+        
+    </div>
+    <div id="bottomContainer" class="bottomContainer">
+        <form class="feedbacksContainer">
+            <div class="types">
+                <div class="selectType">
+                    <label for="dropdown">Type of Feedback</label>
+                    <button name="dropdown" class="dropdown">
+                        <p>
+                            Something to improve?
+                        </p>
+                        <img class="imageSize" src="Pictures/Polygon 1.png">
+                    </button>
+                </div>
+                <div class="selectType">
+                    <label for="type">What page (if applicable)</label>
+                    <button class="dropdown">
+                        <p>
+                            Something to improve?
+                        </p>
+                        <img class="imageSize" src="Pictures/Polygon 1.png">
+                    </button>
+                </div>
+            </div>
+            <div class="types elaborate">
+                <div class="selectType">
+                    <label for="type">Elaborate</label>
+                    <input id="elaborateText" type="text" placeholder="Can you explain it more?"></input>
+                </div>
+            </div>
+            <div class="feedbackSubmitButtonContainer">
+                <button id="feedbackSubmitButton">
+                    Submit
+                </button>
+            </div>
+            
+        </form>
+    </div>
+    <section class="footer">
+        <div class="footerBackground">
+            <button  id="rent">
+                <div class="orange ">
+                    <img  src="Pictures/image 21 (1).png" alt="">
+                </div>
+                <div class="subText">
+                    Rent
+                </div>
+            </button>
+            <button id="feedback" class="lightBrown">
+                <div class="orange bottomOrange">
+                    <img src="Pictures/image 23 (1).png" alt="">
+                </div>
+                <div class="subText">
+                    Feedbacks
+                </div>
+            </button>
+            <button id="services" class="lightBrown">
+                <div class="orange">
+                    <img src="Pictures/image 22 (1).png" alt="">
+                </div>
+                <div class="subText">
+                    Services
+                </div>
+            </button>
+        </div>
+    </section>
+    <script src="js/feedback.js"></script>
+</body>
+</html>
