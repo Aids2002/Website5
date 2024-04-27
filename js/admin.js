@@ -11,7 +11,7 @@ const firebaseConfig = {
     messagingSenderId: "524014652013",
     appId: "1:524014652013:web:aa6f0b1c732dc471348d64"
 }
-///
+
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
@@ -27,7 +27,7 @@ const dbRef = ref(db)
 
 // Get storage instance and reference
 const storage = getStorage();
-const storageRef = ref(storage, 'houses');
+const storageRef = ref(storage, `houses`);
 
 // Function to retrieve prefixes and images
 // async function getPrefixesAndImages() {
@@ -98,162 +98,147 @@ var fileName
 // })
 
 ///////////////////////////
-
-const array = [];
-
-const q = query(collection(db, "boardingHouses")); //, where("name", "==", "maxx")
-
-const querySnapshot = await getDocs(q);
-querySnapshot.forEach((doc) => {
-  // doc.data() is never undefined for query doc snapshots
-  const newarray = [];
-  newarray.push(doc.data().name, doc.data().location,doc.data().roomavailable, doc.data().tags)
-  array.push(newarray)
-
-  const newTr = document.createElement('tr');
-
-  //create row Data
-  const rowName = document.createElement('td');
-  const rowImg = document.createElement('td');
-  const rowLocation = document.createElement('td')
-  const rowRoom = document.createElement('td')
-  const rowTag = document.createElement('td');
-  const rowAct = document.createElement('td');
+const q = query(collection(db, "boardingHouses"))
+const loadBoardingHouses = async () => {
+    try {
+      const querySnapshot = await getDocs(q);
+      const newData = [];
   
-  rowName.innerHTML = doc.data().name;
-  rowImg.innerHTML = '';
-  rowLocation.innerHTML = doc.data().location;
-  rowRoom.innerHTML = doc.data().roomavailable;
-  rowTag.innerHTML = doc.data().tags;
-  rowAct.innerHTML = '';
- 
-  newTr.append(rowName);
-  newTr.append(rowImg);
-  newTr.append(rowLocation);
-  newTr.append(rowRoom)
-  newTr.append(rowTag)
-  newTr.append(rowAct)
-  getTable.appendChild(newTr);
-
-});
-
-const loading =  (() =>{
-    return console.log(array);
-}) 
-loading()
-//////////////////////////
-
-selectFile.addEventListener('change', (e) => {
+      querySnapshot.forEach((doc) => {
+        const newarray = [];
+        newarray.push(doc.data().name, doc.data().img, doc.data().location, doc.data().roomavailable, doc.data().tags);
+        newData.push(newarray);
+      });
+  
+      // Clear existing table rows
+  
+      // Populate table with updated data
+      newData.forEach((data) => {
+        const [name, img, location, roomavailable, tags] = data;
+        const newTr = document.createElement('tr');
+        newTr.innerHTML = `
+          <td>${name}</td>
+          <td><img src="${img[0]}" alt="Boarding House Image"></td>
+          <td>${location}</td>
+          <td>${roomavailable}</td>
+          <td>${tags}</td>
+          <td></td>
+        `;
+        getTable.appendChild(newTr);
+      });
+    } catch (error) {
+      console.error('Error loading boarding houses:', error);
+    }
+  };
+  
+  // Initial load of boarding houses
+  loadBoardingHouses();
+  selectFile.addEventListener('change', (e) => {
     console.log('file')
     fileItem = e.target.files;
     fileName = fileItem.name;
     console.log('butu: ',fileItem)
 })
-
-
-// add boarding house
-const nestedArray = [];
-const downloadURLsObject = {};
-
-name.addEventListener('submit', (e) => {
-    e.preventDefault()
-   
-/////////////////////////////////
+  // Function to handle form submission
+  name.addEventListener('submit', async (e) => {
+    e.preventDefault();
+  
     if (!fileItem) {
-        console.error('No file selected.');
-        return;
+      console.error('No file selected.');
+      return;
     }
-
-    var colRef = collection(db,'boardingHouses')
-
-    var documentId = name.name.value;
-
-    for (let i = 0; i < fileItem.length; i++) {
-
-        const file = fileItem[i];
-        const fileRef = ref(storageRef,name.name.value+"/"+file.name); // ${name.name.value}/${file.name}
-        const uploadTask = uploadBytes(fileRef, fileItem[i]);
-        uploadTask.then((snapshot) => {
-        console.log('File uploaded successfully.');
-            getDownloadURL(fileRef).then((downloadURL) => {
-                const newArr = []
-                if (!downloadURLsObject[name.name.value]) {
-                    downloadURLsObject[name.name.value] = [];
-                }
-               
-                console.log(`Download URL for ${downloadURL}`);
-
-                newArr.push(downloadURL);
-                // You can perform further actions with the download URL here
-            })
-            .catch((error) => {
-                console.error('Error getting download URL:', error);
-            });
-            array.push(newArr);
-        }).catch((error) => {
-        console.error('Error uploading file:', error);
-        }).finally(() => {
-            // Push the object into the main array after all uploads and URL retrievals are complete
-            if (i === fileItem.length - 1) {
-                nestedArray.push(downloadURLsObject);
-                console.log('Nested Array:', nestedArray);
-            }
-        });
-
-    // Data to be added to the document
+  
+    const colRef = collection(db, 'boardingHouses');
+    const documentId = name.name.value;
     const data = {
-        name : name.name.value,
-        location: formData.loc.value,
-        roomavailable: formData.room.value,
-        tags: formData.tags.value , 
+      name: name.name.value,
+      location: formData.loc.value,
+      roomavailable: formData.room.value,
+      tags: formData.tags.value,
+      img: [] // Initialize img as an empty array to store URLs
     };
-/////////////////////
-    const newTr = document.createElement('tr');
-
-    //create row Data
-    const rowName = document.createElement('td');
-    const rowImg = document.createElement('td');
-    const rowLocation = document.createElement('td')
-    const rowRoom = document.createElement('td')
-    const rowTag = document.createElement('td');
-    const rowAct = document.createElement('td');
-    
-    rowName.innerHTML = name.name.value;
-    rowImg.innerHTML = '';
-    rowLocation.innerHTML = formData.loc.value;
-    rowRoom.innerHTML = formData.room.value;
-    rowTag.innerHTML = formData.tags.value;
-    rowAct.innerHTML = '';
+  
+    // Array to store promises for each file upload
+    const uploadPromises = [];
+  
+    for (let i = 0; i < fileItem.length; i++) {
+      const file = fileItem[i];
+      const fileRef = ref(storageRef, `${name.name.value}/${file.name}`);
+  
+      const uploadPromise = uploadBytes(fileRef, file)
+        .then((snapshot) => getDownloadURL(snapshot.ref))
+        .then((downloadURL) => {
+          data.img.push(downloadURL); // Push the download URL to img array in data
+        })
+        .catch((error) => {
+          console.error('Error uploading file:', error);
+          throw error; // Propagate the error for centralized error handling
+        });
+  
+      uploadPromises.push(uploadPromise); // Add the upload promise to the array
+    }
+  
+    try {
+      await Promise.all(uploadPromises); // Wait for all uploads to complete
+      await setDoc(doc(colRef, documentId), data); // Set the document with data containing imgurls
+      // Add the new boarding house directly to the table without reloading the entire table
+      const newTr = document.createElement('tr');
+      newTr.innerHTML = `
+        <td>${data.name}</td>
+        <td><img src="${data.img[0]}" alt="Boarding House Image"></td>
+        <td>${data.location}</td>
+        <td>${data.roomavailable}</td>  
+        <td>${data.tags}</td>
+        <td></td>
+      `;
+      getTable.appendChild(newTr);
+  
+      name.reset(); // Reset the form
+      formData.reset(); // Reset the form
+    } catch (error) {
+      console.error('Error setting document with image URLs:', error);
+    }
+  });
    
-    newTr.append(rowName);
-    newTr.append(rowImg);
-    newTr.append(rowLocation);
-    newTr.append(rowRoom)
-    newTr.append(rowTag)
-    newTr.append(rowAct)
-    getTable.appendChild(newTr);
-/////////////////////
-    // Add the document with the specified ID
-    setDoc(doc(colRef, documentId), data)
-    .then(() => {
-        name.reset()
-        formData.reset()
-    })
-    
-    }   
-   
-    // const imageRef = ref(storage, 'houses');
+    // const imageRef = ref(storage, '/houses/Loreen/WMSU.png');
 
     // getDownloadURL(imageRef)
     //         .then((downloadURL) => {
     //             console.log(`Download URL for ${downloadURL}`);
+
+    //             // Assuming you have the download URL from Firebase Storage stored in a variable called imageUrl
+    //             var imageUrl = downloadURL;
+
+    //             // Get the <img> element by its ID or any other suitable selector
+    //             var imgElement = document.querySelector("#offcanvasNavbarLabel img");
+
+    //             // Set the src attribute of the <img> element to the Firebase Storage download URL
+    //             imgElement.src = imageUrl;
     //             // You can perform further actions with the download URL here
+    //             console.log('here');
     //         })
     //         .catch((error) => {
     //             console.error('Error getting download URL:', error);
     //         });  
-    
-})
+            
+    //         const collectionRef = firebase.firestore().collection('boardinghouses');
+
+    //         let namesArray = [];
+
+    //         // Query the collection to get all documents
+    //         collectionRef.get()
+    //         .then((querySnapshot) => {
+    //     // Loop through each document in the collection
+    // querySnapshot.forEach((doc) => {
+    //     // Get the name field from each document and add it to the namesArray
+    //     const name = doc.data().name; // Assuming 'name' is the field you want to retrieve
+    //     namesArray.push(name);
+    // });
+
+    // // Now 'namesArray' contains all the names from your collection
+    // console.log(namesArray);
+    // })
+
 
 // console.log('Nested Array:', nestedArray);
 
@@ -284,7 +269,7 @@ deleteBH.addEventListener('click', (e) => {
 //             const row = `<tr>
 //                             <td>${data.name}</td>
 //                             <td>${data.email}</td>
-//                             <td>
+//                            <td>
 //                                 <button onclick="editRecord('${doc.id}')">Edit</button>
 //                                 <button onclick="deleteRecord('${doc.id}')">Delete</button>
 //                             </td>
