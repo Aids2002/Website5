@@ -28,6 +28,7 @@ const dbRef = ref(db)
 // Get storage instance and reference
 const storage = getStorage();
 const storageRef = ref(storage, `houses`);
+const colRef = collection(db, 'boardingHouses')
 
 // Function to retrieve prefixes and images
 // async function getPrefixesAndImages() {
@@ -122,23 +123,71 @@ const loadBoardingHouses = async () => {
           <td>${location}</td>
           <td>${roomavailable}</td>
           <td>${tags}</td>
-          <td></td>
+          <td><button class="delete-btn">Delete</button></td>
         `;
         getTable.appendChild(newTr);
       });
+
     } catch (error) {
       console.error('Error loading boarding houses:', error);
     }
   };
-  
-  // Initial load of boarding houses
-  loadBoardingHouses();
+  ////
   selectFile.addEventListener('change', (e) => {
     console.log('file')
     fileItem = e.target.files;
     fileName = fileItem.name;
     console.log('butu: ',fileItem)
 })
+  // Initial load of boarding houses
+  loadBoardingHouses();
+
+  const table = document.querySelector('.tableContainer #table');
+
+  // Add event listener to the parent element of the table
+  table.addEventListener('click', async (event) => {
+    const target = event.target;
+    if (target.tagName === 'BUTTON' && target.classList.contains('delete-btn')) {
+    // If the clicked element is a "Delete" button inside the table
+    console.log('click')
+
+    const row = target.closest('tr'); // Get the closest table row
+    if (!row) return; // Return if no row found
+
+    console.log(row)
+
+    // Get the document ID from the first column of the row
+    const firstColumn = row.querySelector('td:first-child');
+    if (!firstColumn) return; // Return if first column not found
+
+    console.log(firstColumn)
+
+    const documentId = firstColumn.textContent.trim(); // Assuming the document ID is text content
+    if (!documentId) return; // Return if no document ID found
+
+    try {
+        // Remove the row from the table
+        row.remove();
+  
+        // Delete the corresponding document from Firestore
+        await deleteDoc(doc(colRef, documentId));
+        console.log('Document deleted successfully.');
+  
+        // Delete files in the folder in Firebase Cloud Storage
+        const folderRef = ref(storageRef, `${documentId}/`);
+        const folderFiles = await listAll(folderRef);
+        const deleteFilePromises = folderFiles.items.map((item) => deleteObject(item));
+        await Promise.all(deleteFilePromises);
+  
+        // Delete the folder itself
+        await deleteObject(folderRef);
+        console.log('Folder in Cloud Storage deleted successfully.');
+      } catch (error) {
+        console.error('Error deleting document and folder:', error);
+      }
+    }
+    });
+  
   // Function to handle form submission
   name.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -181,18 +230,34 @@ const loadBoardingHouses = async () => {
     try {
       await Promise.all(uploadPromises); // Wait for all uploads to complete
       await setDoc(doc(colRef, documentId), data); // Set the document with data containing imgurls
+  
       // Add the new boarding house directly to the table without reloading the entire table
       const newTr = document.createElement('tr');
       newTr.innerHTML = `
         <td>${data.name}</td>
         <td><img src="${data.img[0]}" alt="Boarding House Image"></td>
         <td>${data.location}</td>
-        <td>${data.roomavailable}</td>  
+        <td>${data.roomavailable}</td>
         <td>${data.tags}</td>
-        <td></td>
+        <td><button class="delete-btn">Delete</button></td>
       `;
       getTable.appendChild(newTr);
-  
+        
+      // Add event listener to the delete button
+      const deleteBtn = newTr.querySelector('.delete-btn');
+      deleteBtn.addEventListener('click', async () => {
+      // Remove the row from the table
+      newTr.remove();
+
+      try {
+        // Delete the corresponding document from Firestore
+        await deleteDoc(doc(colRef, documentId));
+        console.log('Document deleted successfully.');
+      } catch (error) {
+        console.error('Error deleting document:', error);
+      }
+    });
+    alert("Boarding House added")
       name.reset(); // Reset the form
       formData.reset(); // Reset the form
     } catch (error) {

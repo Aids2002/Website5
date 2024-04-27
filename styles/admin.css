@@ -9,7 +9,7 @@ body{
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    padding-top:200px;
+    padding-top:14vh;
 }
 #topCont{
     display:flex;
@@ -27,24 +27,26 @@ body{
     padding-top:5vh;
     font-weight:700;
 }
-#table{
-    min-height:50px;
-    border:1px solid;
-}
+
 #table td{
     border:1px solid;
     text-align: center;
     box-shadow: 0 0 4px rgba(97, 96, 96, 0.25)
 }
-
+tbody{
+    border:none;
+}
+#table{
+    border:none;
+}
 .tableContainer{
     display:flex;
     width:90%;
     align-self:center;
     flex-direction: column;
     min-height:300px;
-    border:1px solid;
     z-index:101;
+    justify-content: center;
 }
 .tableContainer tr{
     display:flex;
@@ -62,16 +64,46 @@ body{
     margin-left:5%;
     margin-top:5px;
     height:54px;
+    align-self:flex-start;
+    margin-bottom:5vh;
 }
-.heading{
-    background-color:gray;
-    font-weight:700;
-    color:white;
-}
+
 td{
-    flex:1;
+    display:flex;
+    flex-grow:1;
+    flex-shrink:0;
     font-size:14px;
     font-weight:400;
+    align-items: center;
+    justify-content: center;
+}
+td:nth-of-type(3),td:nth-of-type(4),td:nth-of-type(6){
+    min-width:105px;
+    flex-grow:2;
+    max-width:105px;
+    flex-shrink:0;
+}
+td:nth-of-type(1),td:nth-of-type(2),td:nth-of-type(5){
+    max-width:200px;
+    min-width:300px;
+    flex-grow:2;
+    flex-shrink:0;
+
+}
+
+#location{
+    flex-shrink:0;
+    min-width:105px;
+}
+td img{
+    width:100%;
+    max-width:300px;
+    object-fit: fill;
+    height:100%;
+    min-height:196px;
+}
+#imageList{
+    flex-grow:2;
 }
 .submitButton{
     background-color: #0d6efd;
@@ -102,4 +134,29 @@ form{
     border-radius:5px;
     border-style:solid;
     
+}
+.delete-btn{
+    background-color: rgb(233, 73, 73);
+    color:white;
+    border:none;
+    font-size:14px;
+    padding:10px 15px;
+    border-radius:5px;
+    font-family:outfit,sans-serif;
+    font-weight:600;
+    box-shadow: -2px 2px 6px rgba(0,0,0,0.28);
+    -webkit-box-shadow: -2px 2px 6px 0px rgba(0,0,0,0.28);
+    -moz-box-shadow: -2px 2px 6px 0px rgba(0,0,0,0.28);
+}
+td{
+    font-size:16px;
+    font-family: Outfit, sans-serif;
+    font-weight:600;
+}
+.heading{
+    background-color:rgb(36, 35, 35);
+    font-weight:400;
+    color:white;
+    font-family: outfit,sans-serif;
+    font-size:16px;
 }
