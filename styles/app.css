@@ -132,6 +132,7 @@ body{
     justify-content: center;
     flex-shrink:1;
     flex-grow:1;
+    position:relative;
 }
 .text p{
     font-size:12px;
@@ -161,7 +162,6 @@ body{
     padding-left:10px;
     border-left: 1px solid rgba(187, 179, 179, 0.8);
     transition: all 0.2s;
-
 }
 #orientation{
     border-bottom-right-radius: 5px;
@@ -177,6 +177,7 @@ body{
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
     transition: all 0.2s;
+    position:relative;
 
 }
 #searchIconContainer{
@@ -222,7 +223,9 @@ body{
     height:15px;
     width:18px;
     align-self:center;
-    
+}
+.gray{
+    color:gray;
 }
 .subIconsContainer:hover button{
     background-color: rgb(214, 213, 213);
@@ -274,7 +277,7 @@ body{
 }
 .houseContainer{
     display:flex;
-    width:92%;
+    width:90%;
     justify-content: center;
     column-gap: 5vh;
     flex-wrap: wrap;
@@ -284,38 +287,42 @@ body{
     padding-top:237px;
 }
 .houses{
+    flex-wrap: nowrap;
     flex-grow: 1;
-    flex-basis: 267px;
+    flex-basis: 200px;
     display:flex;
     max-width:560px;
-    min-width:267px;
+    min-width:250px;
     flex-direction: column;
-    
     border-radius:10px;
-    row-gap: 10px;
-    filter:blur(0.88)
 }
 /* #house2,#house3,#house4,#house5{
     display:none;
 } */
 
 .houseImage{
-    flex:1;
+    flex-shrink:1;
     object-fit: fill;
-    min-height:253px;
-    border-radius: 15px;
-    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.25);
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    /* box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.25);
     -webkit-box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.25);
-    -moz-box-shadow: 0px px 6px 0px rgba(0,0,0,0.25);
+    -moz-box-shadow: 0px px 6px 0px rgba(0,0,0,0.25); */
     z-index: 102;
+    min-height:220px;
+    max-height:250px;
 }
 .houses p{
-    min-height:77.3px;
+    flex-grow:2;
+    flex-shrink:0;
+    min-height:150.3px;
+    max-height:200px;
     background-color: white;
-    border-radius:10px;
-    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.25);
-    -webkit-box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.25);
-    -moz-box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.25);
+    border-bottom-right-radius:15px;
+    border-bottom-left-radius: 15px;
+    box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.25);
+    -webkit-box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.25);
+    -moz-box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.25);
 }
 
 .forpreButton p,.forpreButton span{
@@ -397,10 +404,90 @@ body{
     -webkit-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.50);
     -moz-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.50);
 }
-
+.subText{
+    display:none;
+}
+#rent:hover .subtext,#services:hover .subtext, #feedback:hover .subtext{
+    display:inline;
+    position: absolute;
+    top:-20;
+    z-index:200;
+}
 #icon3,#icon4,#icon5,#icon6,#icon7,#icon8,#icon9,#icon10,#icon11,#icon12{
     display:none;
 }
+
+.locationModal{
+    display:none;
+    position:absolute;
+    opacity:1;
+    transition: all 0.5s;
+    width: 100%;
+    background-color: white;
+    min-height:44vh;
+    border-radius:10px;
+    max-width:650px;
+    bottom:-330;
+    box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.25);
+}
+#locationSearch{
+    height:35px;
+    border-style:solid;
+    border-radius:5px;
+    width:90%;
+    align-self:center;
+    justify-self: center;
+}
+#locationForm{
+    display:flex;
+    flex-direction: column;
+    padding-top:2vh;
+}
+.specificSearch{
+    width:90%;
+    align-self:center;
+    border:none;
+    height:35px;
+    font-size:14px;
+}
+.specificSearch::placeholder{
+    font-family:Outfit;
+    font-size:14px;
+    font-weight:700;
+    opacity:1;
+    color:352315;
+}
+#searchBoard{
+    max-width:95px;
+    align-self:end;
+    background-color: 352315;
+    color:white;
+    font-weight:400;
+    height:35px;
+    border-radius:5px;
+    border:none;
+}
+#locationModalButton img{
+    height: 100%;
+}
+#buttonContainer{
+    width:90%;
+    align-self:center;
+    display:flex;
+    flex-direction: column;
+}
+#searchButtonContainer{
+    background-color: white;
+    position: absolute;
+    right:0;
+    border:0;
+    height:15px;
+}
+#searchButtonContainer img{
+    height:100%;
+}
+
+
 @media screen and (min-width:320px) {
     #icon3{
         display:flex;
@@ -462,79 +549,4 @@ body{
         display:none;
     }
 }
-
-/* 
-@media screen and (min-width:1890.1px)
-{
-    #house2,#house3, #house5{
-        display:flex;
-    }
-    .houses{
-        max-width:360px;
-    }
-    .houseContainer{
-        justify-content: space-between;
-    }
-}
-
-
-@media screen and ((min-width:300px) and (max-width:381.9px))
-{   
-    .houses{
-        max-width:280px;
-    }
-}
-@media screen and ((min-width:381px) and (max-width:492px))
-{   
-    .houses{
-        max-width:350px;
-        
-    }
-}
-@media screen and ((min-width:492px) and (max-width:692.9px))
-{   
-    .houses{
-        max-width:450px;
-    }
-}
-@media screen and ((min-width:692px) and (max-width:1019px))
-{   
-    #house2{
-        display:flex;
-    }
-    .houses{
-        max-width:320px;
-    }
-    
-}
-@media screen and ((min-width:1020px) and (max-width:1399px))
-{
-    #house2,#house3{
-        display:flex;
-    }
-    .houses{
-        max-width:320px;
-    }
-}
-@media screen and (min-width:1399.1px)
-{
-    #house2,#house3, #house4{
-        display:flex;
-    }
-    .houses{
-        max-width:330px;
-    }
-    .houseContainer{
-        justify-content: space-between;
-    }
-} */
-/* 
-@media screen and (min-height:689px){
-    #searchIconContainer{
-        width:48px;
-        height:48px;
-        margin-right:1vh;
-    }
-} */
-
 
