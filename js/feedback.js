@@ -8,7 +8,7 @@ const getServices = document.querySelector('#services');
 
 const goMain = (variable) =>{
     variable.addEventListener('click', () =>{
-        window.location.href = 'home.ejs'
+        window.location.href = 'index.html'
     })
 }
 goMain(getLogo);

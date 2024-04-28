@@ -14,6 +14,7 @@ body{
     height:100vh;
     background-color: FBAD15;
     font-family: Outfit,sans-serif;
+  
 }
 .container{
     align-self: top;
@@ -169,17 +170,18 @@ p{
 #elaborateText{
     flex-grow:2;
     max-height:210px;
-    min-height:30vh;
     border:1px solid black;
     border-radius:10px;
     align-items: start;
     display:flex;
     position:relative;
+    padding-bottom: 20vh;
+    padding-left:10px;
+    padding-top:10px;
 }
 #elaborateText::placeholder{
     position:absolute;
-    top:10px;
-    left:10px;
+    
 }
 #feedbackSubmitButton{
     height:40px;
@@ -233,6 +235,12 @@ p{
     min-height:40px;
     border-radius: 10px;
     background-color: rgba(255,255,255,0);
+}
+.subText{
+    font-weight:700;
+    font-size:13.3px;
+    color:352215;
+    font-family:outfit,sans-serif;
 }
 .footerBackground button{
     min-height:50px;

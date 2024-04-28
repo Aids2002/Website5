@@ -33,10 +33,38 @@ const getP = document.querySelector('#pText')
 const getPer = document.querySelector('.persuasiveText')
 const getLoginButton = document.querySelector('#loginButton');
 const getFooter = document.querySelector('.footer');
+const getFeedback = document.querySelector('#feedback')
 const getServices = document.querySelector('#services');
 const getIcons = document.querySelectorAll('.subIconsContainer');
 const getHouseContainer = document.querySelector('.houseContainer');
 let oldScrollStatus = 0;
+
+const getSearchForm = document.querySelector('.locationModal');
+const getLocation = document.querySelector('#location')
+getLocation.addEventListener('click', () => {
+    getSearchForm.style.display = 'block'
+})
+const getPricing = document.querySelector('#pricing')
+getPricing.addEventListener('click', () => {
+    getSearchForm.style.display = 'block'
+    console.log('hello')
+})
+const getOrientation = document.querySelector('.text')
+getOrientation.addEventListener('click', () => {
+    getSearchForm.style.display = 'block'
+})
+const getSearchButton = document.querySelector('#searchButtonContainer').addEventListener('click', () => {
+        getSearchForm.style.display = 'none';
+})
+
+getFeedback.addEventListener('click', () =>{
+    window.location.href = "feedback.html"
+    console.log('here')
+})
+
+getServices.addEventListener('click', () =>{
+    window.location.href = 'services.html'
+})
 
 ///////////////////////////
 console.log('here')
@@ -195,28 +223,8 @@ window.addEventListener('scroll', function(){
     }
 })
 
-const getFeedback = document.querySelector('#feedback')
-getFeedback.addEventListener('click', () =>{
-    window.location.href = "feedback.html"
-})
 
-getServices.addEventListener('click', () =>{
-    window.location.href = 'services.html'
-})
 
-const getSearchForm = document.querySelector('.locationModal');
-const getLocation = document.querySelector('#location').addEventListener('click', () => {
-    getSearchForm.style.display = 'block'
-})
-const getPricing = document.querySelector('#pricing').addEventListener('click', () => {
-    getSearchForm.style.display = 'block'
-})
-const getOrientation = document.querySelector('#orientation').addEventListener('click', () => {
-    getSearchForm.style.display = 'block'
-})
-const getSearchButton = document.querySelector('#searchButtonContainer')
-    .addEventListener('click', () => {
-        getSearchForm.style.display = 'none';
-    })
+
 
 

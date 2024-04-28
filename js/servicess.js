@@ -5,7 +5,7 @@ const getRent = document.querySelector('#rent');
 const getFeedback = document.querySelector('#feedback');
 const goMain = (variable) =>{
     variable.addEventListener('click', () =>{
-        window.location.href = 'home.ejs'
+        window.location.href = 'index.js'
     })
 }
 goMain(getLogo);
@@ -30,6 +30,9 @@ window.addEventListener('scroll', () =>{
     oldScrollStatus = currentScrollTop;
 })
 
+getRent.addEventListener('click', () => {
+    window.location.href = 'index.html'
+})
 getFeedback.addEventListener('click', () =>{
     window.location.href = 'feedback.html'
 })
