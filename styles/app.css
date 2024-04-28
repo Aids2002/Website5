@@ -266,7 +266,7 @@ body{
 .brownSection{
     display:flex;
     background-color: white;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: nowrap;
     flex-shrink: 0;
     min-height:352px;
@@ -285,14 +285,14 @@ body{
     align-items: center;
     justify-content: space-between;
     padding-top:237px;
+    align-self:center;
 }
 .houses{
-    flex-wrap: nowrap;
     flex-grow: 1;
     flex-basis: 200px;
     display:flex;
-    max-width:560px;
-    min-width:250px;
+    max-width:350px;
+    min-width:100px;
     flex-direction: column;
     border-radius:10px;
 }
@@ -302,7 +302,7 @@ body{
 
 .houseImage{
     flex-shrink:1;
-    object-fit: fill;
+    object-fit: cover;
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
     /* box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.25);
@@ -311,11 +311,25 @@ body{
     z-index: 102;
     min-height:220px;
     max-height:250px;
+    display:flex;
+    flex-direction:column;
+    width:100%;
 }
-.houses p{
+.inTextP{
+    display:flex;
+    width:90%;
+    align-self:center;
+    flex-direction:column;
+    padding-top:2vh;
+}
+
+.housesP{
+    display:flex;
+    flex-direction: column;
+    width:100%;
     flex-grow:2;
     flex-shrink:0;
-    min-height:150.3px;
+    padding-bottom:3vh;
     max-height:200px;
     background-color: white;
     border-bottom-right-radius:15px;
@@ -324,7 +338,31 @@ body{
     -webkit-box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.25);
     -moz-box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.25);
 }
-
+.inTextP{
+    width:90%;
+    align-self:center;
+}
+.topText{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap:wrap;
+}
+.bottomText{
+    padding-left:22px;
+    line-height: 20px;;
+}
+.houseName{
+    font-size:18px;
+    font-weight:600;
+}
+.pricing, .avail, .loc{
+    font-size:12px;
+}
+.loc{
+    display:flex;
+    align-items:center;
+}
 .forpreButton p,.forpreButton span{
     color:white;
     font-weight:normal;
@@ -497,6 +535,13 @@ body{
     #icon4{
         display:flex;
     }
+}@media screen and (max-width:496.9px){
+    .houseContainer{
+        flex-direction:column;
+    }
+    .houses{
+        align-self:center;
+    }
 }
 @media screen and (min-width:540px) {
     #icon5{
@@ -549,4 +594,5 @@ body{
         display:none;
     }
 }
+
 

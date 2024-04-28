@@ -3,7 +3,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bbuddy</title>
-    <link rel="stylesheet" href="styles/app.css">
+    <link rel="stylesheet" href="/styles/app.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
@@ -17,8 +17,8 @@
             <div >
                 <div  class="topOptions">
                     <button class="navText font-16 buttonText">Rent</button>
-                    <button class="navText font-16 buttonText" disabled>Feedbacks</button>
-                    <button class="navText font-16 buttonText" disabled>Services</button>
+                    <button class="navText font-16 buttonText">Feedbacks</button>
+                    <button class="navText font-16 buttonText">Services</button>
                 </div>
             </div>
             <div id="loginContainer">
@@ -90,55 +90,54 @@
             </div>
             <section id ="iconsSection">
                 <section class="iconsContainer">
-                    <div id="icon1" class="subIconsContainer" >
-                        <img class="imageSize" alt="starIcon" name="starIcon" src="/Pictures/Star 1.png">
-                        <button > Favorites</buttton>
+                    <div id="icon1"data-value="favorite" class="subIconsContainer" >
+                        <img data-value="favorite"class="imageSize" alt="starIcon" name="starIcon" src="/Pictures/Star 1.png">
+                        <button data-value="favorite"> Favorites</buttton>
                     </div>
-                    <div id="icon2" class="subIconsContainer">
-                        <img class="imageSize" alt="AC Icon" value="AC"name="Icon" src="/Pictures/AC 1.png">
-                        <button class="gray">Air-con</button>
+                    <div id="icon2" data-value="aircon" class="subIconsContainer">
+                        <img class="imageSize" data-value="aircon" alt="AC Icon" name="Icon" src="/Pictures/AC 1.png">
+                        <button class="gray" data-value="aircon">Air Con</button>
                     </div>
-                    <div id="icon3" class="subIconsContainer">
-                        <img class="imageSize" alt="Convenience Icon" name="convenience" src="/Pictures/Convenience 1.png">
-                        <button class="gray"> Store</button>
+                    <div id="icon3" data-value="store" class="subIconsContainer">
+                        <img class="imageSize" data-value="store" alt="Convenience Icon" name="store" src="/Pictures/Convenience 1.png">
+                        <button class="gray" data-value="store">Near a Store</button>
                     </div>   
-                    <div id="icon4" class="subIconsContainer">
-                        <img class="imageSize" alt="AC Icon" value="AC"name="Icon" src="/Pictures/AC 1.png">
-                        <button class="gray">Air-con</button>
+                    <div id="icon4" data-value="dining" class="subIconsContainer">
+                        <img class="imageSize" data-value="dining" alt="Dining Icon" name="dining" src="/Pictures/Dining 1.png">
+                        <button data-value="dining" class="gray">Dining Area</button>
                     </div>
-                    <div id="icon5" class="subIconsContainer">
-                        <img class="imageSize" alt="Convenience Icon" name="convenience" src="/Pictures/Convenience 1.png">
-                        <button class="gray"> Store</button>
+                    <div id="icon5" data-value="gym" class="subIconsContainer">
+                        <img class="imageSize" alt="Gym Icon" name="gym"data-value="gym" src="/Pictures/gym 1.png">
+                        <button class="gray"data-value="gym" >Near a Gym</button>
                     </div>  
-                    <div id="icon6" class="subIconsContainer">
-                        <img class="imageSize" alt="AC Icon" value="AC"name="Icon" src="/Pictures/AC 1.png">
-                        <button class="gray">Air-con</button>
+                    <div id="icon6" data-value="kitchen" class="subIconsContainer">
+                        <img class="imageSize" data-value="kitchen" alt="Kitchen Icon"  name="kitchen" src="/Pictures/Kitchen 1.png">
+                        <button class="gray" data-value="kitchen">With Kitchen</button>
                     </div>
-                    <div id="icon7" class="subIconsContainer">
-                        <img class="imageSize" alt="Convenience Icon" name="convenience" src="/Pictures/Convenience 1.png">
-                        <button class="gray"> Store</button>
+                    <div id="icon7"data-value="wifi" class="subIconsContainer">
+                        <img class="imageSize" alt="WiFi Icon"data-value="wifi" name="WiFi" src="/Pictures/internet 1.png">
+                        <button data-value="wifi"class="gray">WiFi Zone</button>
                     </div>  
-                    <div id="icon8" class="subIconsContainer">
-                        <img class="imageSize" alt="AC Icon" value="AC"name="Icon" src="/Pictures/AC 1.png">
-                        <button class="gray">Air-con</button>
+                    <div id="icon8" data-value="parking" class="subIconsContainer">
+                        <img data-value="parking" class="imageSize" alt="Parking Icon" name="parking" src="/Pictures/Parking 1.png">
+                        <button data-value="parking" class="gray">Free Parking</button>
                     </div>
-                    <div id="icon9" class="subIconsContainer">
-                        <img class="imageSize" alt="Convenience Icon" name="convenience" src="/Pictures/Convenience 1.png">
-                        <button class="gray"> Store</button>
+                    <div id="icon9" data-value="cctv" class="subIconsContainer">
+                        <img class="imageSize" data-value="cctv" alt="CCTV Icon"  src="/Pictures/Surveillance  1.png">
+                        <button data-value="cctv" class="gray">With CCTV</button>
                     </div>  
-                    <div id="icon10" class="subIconsContainer">
-                        <img class="imageSize" alt="AC Icon" value="AC"name="Icon" src="/Pictures/AC 1.png">
-                        <button class="gray">Air-con</button>
+                    <div id="icon10" data-value="laundry" class="subIconsContainer">
+                        <img class="imageSize" data-value="laundry" alt="Laundry Icon" name="Laundry Icon" src="/Pictures/Laundry 1.png">
+                        <button data-value="laundry" class="gray">Near a Laundry</button>
                     </div>
-                    <div id="icon11" class="subIconsContainer">
-                        <img class="imageSize" alt="Convenience Icon" name="convenience" src="/Pictures/Convenience 1.png">
-                        <button class="gray"> Store</button>
+                    <div id="icon11" data-value="recreation" class="subIconsContainer">
+                        <img class="imageSize" data-value="recreation" alt="Recreation Icon" name="recreation" src="/Pictures/Recreation 1.png">
+                        <button data-value="recreation" class="gray">Recreation</button>
                     </div>  
-                    <div id="icon12" class="subIconsContainer">
-                        <img class="imageSize" alt="Convenience Icon" name="convenience" src="/Pictures/Convenience 1.png">
-                        <button class="gray"> Store</button>
+                    <div id="icon12" data-value="appliances" class="subIconsContainer">
+                        <img data-value="appliances" class="imageSize" alt="Appliance Icon"  src="/Pictures/Furnishing 1(1).png">
+                        <button data-value="appliances" class="gray">Additional Appliances</button>
                     </div>  
-
                 </section>
                 <section class="iconToggle"> 
                     <button class="option" >
@@ -158,9 +157,26 @@
         <section class="houseContainer">
             <section class="houses">
                 <img class="houseImage" src="/Pictures/imag-2.jpg" alt="">
-                <p>
-                    asdasda
-                </p>
+                <div class="housesP">
+                    <div class="inTextP">
+                        <p class="houseName">
+                            Zamboanga Boarding House
+                        </p>
+                        <div class="topText">
+                            <p class="loc">
+                                <img src="/Pictures/Favorites_fill(1).png"> Sta Maria, Zamboanga City
+                             </p>
+                        </div>
+                        <div class="bottomText">
+                            <p class="avail">
+                                Room Available: 5
+                            </p>
+                            <p class="pricing">
+                                Rent Starts at : 14141
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </section>
             <section id="house2" class="houses">
                 <img class="houseImage" src="/Pictures/image-3.jpg" alt="">
