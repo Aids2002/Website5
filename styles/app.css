@@ -23,7 +23,7 @@ time, mark, audio, video {
 button{
     cursor: pointer;
     font-family:outfit,sans-serif;
-    font-weight: 700;
+    font-weight:400;
 }
 .topOptions{
     display:none;
@@ -142,12 +142,21 @@ body{
     opacity:74%;
     color:717171;
 }
+#searchform{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width:100%;
+}
 #subSearchContainer{
     display:flex;
     flex-direction: row;
     align-items: center;
     width:98%;
     justify-content: space-between;
+}
+.span{
+    font-weight:500;
 }
 #pricing:hover, #location:hover, #orientation:hover{
     background-color: rgba(228, 221, 221, 0.7);
@@ -178,6 +187,9 @@ body{
     border-bottom-left-radius: 5px;
     transition: all 0.2s;
     position:relative;
+    padding-left:1vh;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius:10px;
 
 }
 #searchIconContainer{
@@ -214,20 +226,18 @@ body{
     cursor:pointer;
 }
 
-.subIconsContainer button{
-    background:none;
-    border:none;
-    transition:all 0.4s;
-}
+
+
 .subIconsContainer img{
     height:15px;
     width:18px;
     align-self:center;
 }
-.gray{
-    color:gray;
+#btnss{
+    background-color: white;
+    border:none;
 }
-.subIconsContainer:hover button{
+.subIconsContainer:hover #btnss{
     background-color: rgb(214, 213, 213);
     border-radius:5px;
 }
@@ -283,7 +293,7 @@ body{
     flex-wrap: wrap;
     row-gap:5vh;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-evenly;
     padding-top:237px;
     align-self:center;
 }
@@ -295,6 +305,10 @@ body{
     min-width:100px;
     flex-direction: column;
     border-radius:10px;
+}
+
+.bolder{
+    font-weight:700;
 }
 /* #house2,#house3,#house4,#house5{
     display:none;
@@ -349,8 +363,8 @@ body{
     flex-wrap:wrap;
 }
 .bottomText{
-    padding-left:22px;
-    line-height: 20px;;
+    
+    line-height: 20px;
 }
 .houseName{
     font-size:18px;
@@ -465,7 +479,7 @@ body{
     min-height:44vh;
     border-radius:10px;
     max-width:650px;
-    bottom:-330;
+    bottom:-345;
     box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.25);
 }
 #locationSearch{
@@ -594,5 +608,3 @@ body{
         display:none;
     }
 }
-
-

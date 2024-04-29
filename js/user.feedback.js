@@ -1,16 +1,23 @@
 const getLoginCont = document.querySelector('.loginContainer');
+const getRent = document.querySelector('#rent');
 const getLogo = document.querySelector('#logoContainer');
 const getFooter = document.querySelector('.footer');
-const getRent = document.querySelector('#rent');
-const getFeedback = document.querySelector('#feedback');
+const getBottomContainer = document.querySelector('.bottomContainer')
+const getArrowContainer = document.querySelector('.arrowContainer');
+const getServices = document.querySelector('#services');
+
 const goMain = (variable) =>{
     variable.addEventListener('click', () =>{
-        window.location.href = 'index.html'
+        window.location.href = 'user.index.html'
     })
 }
 goMain(getLogo);
 goMain(getRent);
 
+getLoginCont.addEventListener('click', () =>{
+    window.location.href = 'index.html'
+    console.log('logout')
+})
 
 let oldScrollStatus = 0;
 window.addEventListener('scroll', () =>{
@@ -30,9 +37,11 @@ window.addEventListener('scroll', () =>{
     oldScrollStatus = currentScrollTop;
 })
 
-getFeedback.addEventListener('click', () =>{
-    window.location.href = 'feedback.html'
+
+
+getArrowContainer.addEventListener('click', () =>{
+    getBottomContainer.scrollIntoView ({behavior: 'smooth'});
 })
-getLoginCont.addEventListener('click', () =>{
-    window.location.href = 'login.html'
+getServices.addEventListener('click', () =>{
+    window.location.href = 'user.services.html'
 })

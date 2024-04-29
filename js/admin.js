@@ -30,56 +30,6 @@ const storage = getStorage();
 const storageRef = ref(storage, `houses`);
 const colRef = collection(db, 'boardingHouses')
 
-// Function to retrieve prefixes and images
-// async function getPrefixesAndImages() {
-//     try {
-//       const listResult = await listAll(ref(storageRef));
-//       console.log('List Result:', listResult);
-
-//       const prefixesArray = [];
-
-//       for (const prefixRef of listResult.prefixes) {
-//         const fullPath = prefixRef.fullPath;
-//         const location = prefixRef.location?.path; // Use optional chaining to handle potential undefined location
-  
-//         console.log('Processing Prefix:', fullPath);
-  
-//         // Get a reference to the prefix
-//         const prefixStorageRef = storage.ref(fullPath);
-  
-//         // List files in the prefix (images or other files)
-//         const prefixFiles = await prefixStorageRef.listAll();
-//         console.log('Prefix Files:', prefixFiles);
-  
-//         // Extract image URLs if they exist
-//         const imageUrls = prefixFiles.items.map((item) => item.getDownloadURL());
-//         console.log('Image URLs:', imageUrls);
-  
-//         prefixesArray.push({ fullPath, location, images: imageUrls });
-//       }
-  
-//       console.log('Finished getPrefixesAndImages');
-//       return prefixesArray;
-//     } catch (error) {
-//       console.error('Error getting prefixes and images:', error);
-//       return [];
-//     }
-//   }
-// // Usage example with error handling
-// getPrefixesAndImages()
-//   .then((prefixes) => {
-//     if (prefixes.length === 0) {
-//       console.log('No prefixes and images retrieved.');
-//     } else {
-//       console.log('Prefixes and Images:', prefixes);
-//       console.log('First Prefix:', prefixes[0]);
-//       console.log('Images in First Prefix:', prefixes[0].images);
-//     }
-//   })
-//   .catch((error) => {
-//     console.error('Error:', error);
-//   });
-
 const imageElement = document.getElementById('image-container');
 
 // console.log(storage)
@@ -94,9 +44,40 @@ const selectFile = document.querySelector('#fileInp')
 var fileItem
 var fileName
 
-// getItems(()=>{
-    
-// })
+var locationData
+var roomData
+
+document.addEventListener("DOMContentLoaded", function() {
+  const pageFeedback = document.querySelector('.dropdown-menu .dropdown-item:nth-of-type(1)');
+  const logout = document.querySelector('.dropdown-menu .dropdown-item:nth-of-type(2)');
+
+  pageFeedback.addEventListener('click', function() {
+      alert('Page Feedback clicked!');
+      // Add your logic here for handling page feedback
+  });
+
+  logout.addEventListener('click', function() {
+      alert('Logout clicked!');
+      // Add your logic here for handling logout
+  });
+});
+
+var boardingForm = document.getElementById('boardingForm');
+var locationSelect = boardingForm.querySelector('#location\\:');
+
+locationSelect.addEventListener('change', function() {
+    var selectedLocation = locationSelect.options[locationSelect.selectedIndex].value;
+    console.log(selectedLocation);
+    locationData = selectedLocation
+});
+
+var roomSelect = boardingForm.querySelector('#roomavailable\\:');
+
+roomSelect.addEventListener('change', function() {
+    var selectedRoom = roomSelect.options[roomSelect.selectedIndex].value;
+    console.log(selectedRoom);
+    roomData = selectedRoom
+});
 
 ///////////////////////////
 const q = query(collection(db, "boardingHouses"))
@@ -107,7 +88,7 @@ const loadBoardingHouses = async () => {
   
       querySnapshot.forEach((doc) => {
         const newarray = [];
-        newarray.push(doc.data().name, doc.data().img, doc.data().location, doc.data().roomavailable, doc.data().tags);
+        newarray.push(doc.data().name, doc.data().img, doc.data().location, doc.data().roomavailable, doc.data().price, doc.data().tags);
         newData.push(newarray);
       });
   
@@ -115,13 +96,15 @@ const loadBoardingHouses = async () => {
   
       // Populate table with updated data
       newData.forEach((data) => {
-        const [name, img, location, roomavailable, tags] = data;
+        const [name, img, location, roomavailable, price, tags] = data;
+        console.log(data)
         const newTr = document.createElement('tr');
         newTr.innerHTML = `
           <td>${name}</td>
           <td><img src="${img[0]}" alt="Boarding House Image"></td>
           <td>${location}</td>
           <td>${roomavailable}</td>
+          <td>${price}</td>
           <td>${tags}</td>
           <td><button class="delete-btn">Delete</button></td>
         `;
@@ -196,13 +179,20 @@ const loadBoardingHouses = async () => {
       console.error('No file selected.');
       return;
     }
-  
+
+    console.log(name.name.value)
+    console.log(locationData)
+    console.log(roomData)
+    console.log(formData.price.value)
+    console.log(formData.tags.value)
+
     const colRef = collection(db, 'boardingHouses');
     const documentId = name.name.value;
     const data = {
       name: name.name.value,
-      location: formData.loc.value,
-      roomavailable: formData.room.value,
+      location: locationData,
+      roomavailable: roomData,
+      price: formData.price.value,
       tags: formData.tags.value,
       img: [] // Initialize img as an empty array to store URLs
     };
@@ -238,6 +228,7 @@ const loadBoardingHouses = async () => {
         <td><img src="${data.img[0]}" alt="Boarding House Image"></td>
         <td>${data.location}</td>
         <td>${data.roomavailable}</td>
+        <td>${data.price}</td>
         <td>${data.tags}</td>
         <td><button class="delete-btn">Delete</button></td>
       `;

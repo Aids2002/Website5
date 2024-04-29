@@ -5,7 +5,7 @@ const getRent = document.querySelector('#rent');
 const getFeedback = document.querySelector('#feedback');
 const goMain = (variable) =>{
     variable.addEventListener('click', () =>{
-        window.location.href = 'index.html'
+        window.location.href = 'user.index.html'
     })
 }
 goMain(getLogo);
@@ -31,8 +31,8 @@ window.addEventListener('scroll', () =>{
 })
 
 getFeedback.addEventListener('click', () =>{
-    window.location.href = 'feedback.html'
+    window.location.href = 'user.feedback.html'
 })
 getLoginCont.addEventListener('click', () =>{
-    window.location.href = 'login.html'
+    window.location.href = 'index.html'
 })

@@ -3,7 +3,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="styles/signup.css">
+    <link rel="stylesheet" href="signup.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
@@ -25,15 +25,15 @@
             <form id="signUpForm">
                     <div class="suInputForm">
                         <p>Email Address</p>
-                        <input type="text" placeholder="johndoe@gmail.com">
+                        <input type="text" maxlength="50" placeholder="johndoe@gmail.com">
                     </div>
                     <div class="suInputForm">
                         <p>Password</p>
-                        <input type="password" placeholder="Enter your password">   
+                        <input type="password" maxlength="15" placeholder="Enter your password">   
                     </div>
                     <div class="suInputForm">
                         <p>Number</p>
-                        <input type="number" placeholder="Enter your phone number"> 
+                        <input type="number" maxlength="11" min="0" id="positiveNumberInput" placeholder="Enter your phone number"> 
                     </div>  
                     <button>Continue</button>
             </form>

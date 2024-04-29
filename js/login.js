@@ -29,10 +29,7 @@ document.addEventListener('DOMContentLoaded', function() {
     button.addEventListener('click', function(event) {
         // Prevent the default button click behavior
         event.preventDefault();
-        console.log('pressed');
-
-         
-    // })
+        console.log('pressed')
 
         // For example, you can access form data like this:
         var email = document.getElementById('inputText1').value;
@@ -40,6 +37,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
         console.log(email)
         console.log(password)
+
+        if(email.length == 0)
+        {
+            alert("Email cannot be empty")
+            return
+        }else if (password.length == 0)
+        {
+            alert("Password cannot be empty")
+            return
+        }
 
         // // Perform any validation or API calls here
 
@@ -51,11 +58,15 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log('admin')
             window.location.href = 'admin.html';
             return
+        }else
+        {
+            window.location.href = 'user.index.html';
         }
-        window.location.href = 'index.html';
         })
         .catch((error) => {
             console.log(error.message)
+            alert(error.message + " :: Account entered does not exist")
+            
         })
     })
 });

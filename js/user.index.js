@@ -61,12 +61,11 @@ const getSearchButton = document.querySelector('#searchButtonContainer').addEven
 })
 
 getFeedback.addEventListener('click', () =>{
-    window.location.href = "feedback.html"
-    console.log('here')
+    window.location.href = "user.feedback.html"
 })
 
 getServices.addEventListener('click', () =>{
-    window.location.href = 'services.html'
+    window.location.href = 'user.services.html'
 })
 
 ///////////////////////////
@@ -224,9 +223,11 @@ window.addEventListener('scroll', () =>{
     }
     oldScrollStatus = currentScrollTop;
 })
+
 getLoginButton.addEventListener('click', () => {
-    window.location.href = 'login.html'
+    window.location.href = 'index.html'
 });
+
 const modifyTop = () => {
     getPer.style.display = 'none';
     getSearchContainer.style.maxHeight ='50px';
