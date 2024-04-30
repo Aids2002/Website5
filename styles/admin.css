@@ -160,3 +160,29 @@ td{
     font-family: outfit,sans-serif;
     font-size:16px;
 }
+
+/*  */
+
+/* Example loading spinner styles */
+.spinner {
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-left-color: #333; /* Color of the spinner */
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite; /* Spin animation */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 999; /* Ensure it's above other elements */
+    display: none; /* Hidden by default */
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(90deg); }
+    50% { transform: rotate(180deg); }
+    75% { transform: rotate(280deg); }
+    100% { transform: rotate(360deg); }
+  }

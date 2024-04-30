@@ -32,8 +32,6 @@ const colRef = collection(db, 'boardingHouses')
 
 const imageElement = document.getElementById('image-container');
 
-// console.log(storage)
-
 // for inputs - strings or num
 const name = document.querySelector('#nameForm')
 const formData = document.querySelector('#boardingForm')
@@ -79,7 +77,33 @@ roomSelect.addEventListener('change', function() {
     roomData = selectedRoom
 });
 
-///////////////////////////
+var finalString = '';
+
+document.addEventListener('DOMContentLoaded', () => {
+  var checkboxes = document.querySelectorAll('.checkbox-input');
+  var selectedTags = [];
+  
+
+  checkboxes.forEach(function(checkbox) {
+      checkbox.addEventListener('change', function() {
+          if (this.checked) {
+              selectedTags.push(this.value);
+          } else {
+              var index = selectedTags.indexOf(this.value);
+              if (index !== -1) {
+                  selectedTags.splice(index, 1);
+              }
+          }
+
+          var formattedString = selectedTags.join(', ');
+          console.log('Selected tags:', formattedString);
+          finalString = formattedString
+          // You can use 'formattedString' as needed, like assigning it to an input value or displaying it on the page
+      });
+  });
+});
+
+/////////////////////////// load table values
 const q = query(collection(db, "boardingHouses"))
 const loadBoardingHouses = async () => {
     try {
@@ -116,6 +140,8 @@ const loadBoardingHouses = async () => {
     }
   };
   ////
+  var fileItem;
+
   selectFile.addEventListener('change', (e) => {
     console.log('file')
     fileItem = e.target.files;
@@ -174,9 +200,55 @@ const loadBoardingHouses = async () => {
   // Function to handle form submission
   name.addEventListener('submit', async (e) => {
     e.preventDefault();
+// 
+var loadingSpinner = document.getElementById('loadingSpinner');
+var isCompleted = false; // Variable to track completion status
+
+// Show loading spinner
+loadingSpinner.style.display = 'block';
+// 
+    if(name.name.value == '')
+    {
+      console.error('No name inputted.');
+      alert('No name inputted.')
+      loadingSpinner.style.display = 'none';
+      return;
+    }
+
+    if(formData.price.value == '')
+    {
+      console.error('No price inputted.');
+      alert('No price inputted.')
+      loadingSpinner.style.display = 'none';
+      return;
+    }
+
+    if (typeof locationData == 'undefined') {
+      console.log('Location is not edited');
+      alert('Location is not edited. Please choose a Location')
+      loadingSpinner.style.display = 'none';
+      return;
+    } 
+
+    if (typeof roomData == 'undefined') {
+      console.log('Rooms is not edited');
+      alert('Rooms is not edited. Please choose a No. of Rooms')
+      loadingSpinner.style.display = 'none';
+      return;
+    } 
+
+    if(finalString.length == 0)
+    {
+      console.error('No tags selected.');
+      alert('No tags selected.')
+      loadingSpinner.style.display = 'none';
+      return;
+    }
   
     if (!fileItem) {
       console.error('No file selected.');
+      alert('No file selected.')
+      loadingSpinner.style.display = 'none';
       return;
     }
 
@@ -184,7 +256,9 @@ const loadBoardingHouses = async () => {
     console.log(locationData)
     console.log(roomData)
     console.log(formData.price.value)
-    console.log(formData.tags.value)
+    console.log(finalString+", "+locationData)
+
+    var newString = finalString+", "+locationData
 
     const colRef = collection(db, 'boardingHouses');
     const documentId = name.name.value;
@@ -193,7 +267,7 @@ const loadBoardingHouses = async () => {
       location: locationData,
       roomavailable: roomData,
       price: formData.price.value,
-      tags: formData.tags.value,
+      tags: newString,
       img: [] // Initialize img as an empty array to store URLs
     };
   
@@ -248,53 +322,32 @@ const loadBoardingHouses = async () => {
         console.error('Error deleting document:', error);
       }
     });
-    alert("Boarding House added")
+    // 
+    // Simulate adding item (setTimeout used as an example, replace with actual logic)
+    setTimeout(function() {
+      // Hide loading spinner after some time (simulating completion)
+      loadingSpinner.style.display = 'none';
+      isCompleted = true;
+      if (isCompleted) {
+        alert("Boarding House added")
+      }
+    }, 1); // Change 2000 to the actual time it takes to add the item
+
+    // Check if alert is fired and stop the spinner if needed
+    var interval = setInterval(function() {
+      if (isCompleted) {
+        clearInterval(interval); // Stop checking
+        loadingSpinner.style.display = 'none'; // Hide spinner if not already hidden
+      }
+    }, 1); // Check every 100 milliseconds for completion
+    // 
       name.reset(); // Reset the form
       formData.reset(); // Reset the form
+      finalString.length = 0
     } catch (error) {
       console.error('Error setting document with image URLs:', error);
     }
   });
-   
-    // const imageRef = ref(storage, '/houses/Loreen/WMSU.png');
-
-    // getDownloadURL(imageRef)
-    //         .then((downloadURL) => {
-    //             console.log(`Download URL for ${downloadURL}`);
-
-    //             // Assuming you have the download URL from Firebase Storage stored in a variable called imageUrl
-    //             var imageUrl = downloadURL;
-
-    //             // Get the <img> element by its ID or any other suitable selector
-    //             var imgElement = document.querySelector("#offcanvasNavbarLabel img");
-
-    //             // Set the src attribute of the <img> element to the Firebase Storage download URL
-    //             imgElement.src = imageUrl;
-    //             // You can perform further actions with the download URL here
-    //             console.log('here');
-    //         })
-    //         .catch((error) => {
-    //             console.error('Error getting download URL:', error);
-    //         });  
-            
-    //         const collectionRef = firebase.firestore().collection('boardinghouses');
-
-    //         let namesArray = [];
-
-    //         // Query the collection to get all documents
-    //         collectionRef.get()
-    //         .then((querySnapshot) => {
-    //     // Loop through each document in the collection
-    // querySnapshot.forEach((doc) => {
-    //     // Get the name field from each document and add it to the namesArray
-    //     const name = doc.data().name; // Assuming 'name' is the field you want to retrieve
-    //     namesArray.push(name);
-    // });
-
-    // // Now 'namesArray' contains all the names from your collection
-    // console.log(namesArray);
-    // })
-
 
 // console.log('Nested Array:', nestedArray);
 
@@ -312,28 +365,3 @@ deleteBH.addEventListener('click', (e) => {
 
 })
 // ========
-
-
-// const tableBody = document.querySelector('#dataTable tbody');
-
-// // Function to fetch and display data in the table
-// function displayData() {
-//     db.collection('BoardingHouses').get().then((querySnapshot) => {
-//         tableBody.innerHTML = ''; // Clear existing rows
-//         querySnapshot.forEach((doc) => {
-//             const data = doc.data();
-//             const row = `<tr>
-//                             <td>${data.name}</td>
-//                             <td>${data.email}</td>
-//                            <td>
-//                                 <button onclick="editRecord('${doc.id}')">Edit</button>
-//                                 <button onclick="deleteRecord('${doc.id}')">Delete</button>
-//                             </td>
-//                         </tr>`;
-//             tableBody.insertAdjacentHTML('beforeend', row);
-//         });
-//     });
-// }
-
-// // Call displayData function to initially populate the table
-// displayData();

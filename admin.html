@@ -76,10 +76,11 @@
                 <label for="name"> Boarding House Name:</label>
                 <input class="inputSpace"name="name" type="text">
                 <button class=" submitButton">Submit</button>
+                <div id="loadingSpinner" class="spinner" style="display: none;"></div>
             </form>
             <form id="boardingForm">
             <label for="loc"> Location:</label>
-                <select id="location:" name="location:" required>
+                <select id="location:" name="location:">
                     <option value="Tumaga">Tumaga</option>
                     <option value="Santa Maria">Santa Maria</option>
                     <option value="Tugbungan">Tugbungan</option>
@@ -95,7 +96,7 @@
                 </select>
            
             <label for="room"> Room Available:</label>
-            <select id="roomavailable:" name="roomavailable" required>
+            <select id="roomavailable:" name="roomavailable">
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -103,39 +104,111 @@
                 <option value="5">5</option>
                 <option value="6">6</option>
                 <option value="7">7</option>
-                 <option value="8">8</option>
+                <option value="8">8</option>
                 <option value="9">9</option>
                 <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="15">15</option>
+                <option value="16">16</option>
+                <option value="17">17</option>
+                <option value="18">18</option>
+                <option value="19">19</option>
+                <option value="20">20</option>
+                <option value="21">21</option>
+                <option value="22">22</option>
+                <option value="23">23</option>
+                <option value="24">24</option>
+                <option value="25">25</option>
+                <option value="26">26</option>
+                <option value="27">27</option>
+                <option value="28">28</option>
+                <option value="29">29</option>
+                <option value="30">30</option>
+                <option value="31">31</option>
+                <option value="32">32</option>
+                <option value="33">33</option>
+                <option value="34">34</option>
+                <option value="35">35</option>
+                <option value="36">36</option>
+                <option value="37">37</option>
+                <option value="38">38</option>
+                <option value="39">39</option>
+                <option value="40">40</option>
             </select>
             <form action="price" method="post">
                 <label for="price">Price:</label>
-                <input type="text" id="price" name="price" maxlength="4" pattern="[0-9]{4}"  required> <!-- oninput="price(this)"-->
+                <input type="text" id="price" name="price" maxlength="5" pattern="[0-9]{5}" >
                 <div id="error-msg" class="error"></div>
-
-                <script>
-                function price(input) {
-                const value = input.value;
-                const isValid = /^\d{4}$/.test(value);
-                const errorMsg = document.getElementById('error-msg');
-    
-                if (!isValid) {
-                    errorMsg.textContent = 'Please enter valid digits only.';
-                } else {
-                    errorMsg.textContent = '';
-                }
-                }
-                var input = document.getElementById('price');
-        
-                                 // Restrict input to numbers only
-                                 input.addEventListener('input', function(event) {
-                                var value = input.value;
-                                 input.value = value.replace(/\D/g, '');
-                })
-
-                </script>
-        
-            <label for="tags"> Tags:</label>
-            <input class="inputSpace" name="tags" type="text">
+                
+            <script>
+                document.getElementById('price').addEventListener('input', function() {
+                    var priceValue = parseInt(this.value); // Parse the input as an integer
+                    if (isNaN(priceValue) || priceValue <= 0 || priceValue > 20000) {
+                    // Reset the input if it's not a valid number within the range
+                    this.value = '';
+                    console.log('Invalid input. Please enter a number from 1 to 20,000.');
+                    alert('Invalid input. Please enter a number from 1 to 20,000.')
+                    } else {
+                    console.log('Price changed to: ' + priceValue);
+                    // You can perform further actions with the validated priceValue here
+                    }
+                });
+            </script>
+     
+        <label for="tags"> Tags:</label>
+        <ul class="checkbox-list">
+         <li class="checkbox-item">
+             <input type="checkbox" id="checkbox1" name="favorite" class="checkbox-input" value="favorite">
+             <label for="checkbox1" class="checkbox-label">favorite</label>
+         </li>
+         <li class="checkbox-item">
+             <input type="checkbox" id="checkbox2" name="aircon" class="checkbox-input" value="aircon">
+             <label for="checkbox2" class="checkbox-label">aircon</label>
+         </li>
+         <li class="checkbox-item">
+             <input type="checkbox" id="checkbox3" name="store" class="checkbox-input" value="store">
+             <label for="checkbox3" class="checkbox-label">store</label>
+         </li>
+         <li class="checkbox-item">
+             <input type="checkbox" id="checkbox4" name="dining" class="checkbox-input" value="dining">
+             <label for="checkbox4" class="checkbox-label">dining</label>
+         </li>
+         <li class="checkbox-item">
+             <input type="checkbox" id="checkbox5" name="gym" class="checkbox-input" value="gym">
+             <label for="checkbox5" class="checkbox-label">gym</label>
+         </li>
+         <li class="checkbox-item">
+             <input type="checkbox" id="checkbox6" name="kitchen" class="checkbox-input" value="kitchen">
+             <label for="checkbox6" class="checkbox-label">kitchen</label>
+         </li>
+         <li class="checkbox-item">
+             <input type="checkbox" id="checkbox7" name="wifi" class="checkbox-input" value="wifi">
+             <label for="checkbox7" class="checkbox-label">wifi</label>
+         </li>
+         <li class="checkbox-item">
+             <input type="checkbox" id="checkbox8" name="parking" class="checkbox-input" value="parking">
+             <label for="checkbox8" class="checkbox-label">parking</label>
+         </li>
+         <li class="checkbox-item">
+             <input type="checkbox" id="checkbox9" name="cctv" class="checkbox-input" value="cctv">
+             <label for="checkbox9" class="checkbox-label">cctv</label>
+         </li>
+         <li class="checkbox-item">
+             <input type="checkbox" id="checkbox10" name="laundry" class="checkbox-input" value="laundry">
+             <label for="checkbox10" class="checkbox-label">laundry</label>
+         </li>
+         <li class="checkbox-item">
+             <input type="checkbox" id="checkbox11" name="recreation" class="checkbox-input" value="recreation">
+             <label for="checkbox11" class="checkbox-label">recreation</label>
+         </li>
+         <li class="checkbox-item">
+             <input type="checkbox" id="checkbox12" name="appliances" class="checkbox-input" value="appliances">
+             <label for="checkbox12" class="checkbox-label">appliances</label>
+         </li>
+        </ul>      
             <label for="images">Upload Images:</label>
             <input 
                 type="file"
@@ -143,8 +216,6 @@
                 id="fileInp" 
                 accept="image/png, image/jpeg"
                 multiple
-                
-
             />
             <br>
             <br>

@@ -1,6 +1,7 @@
 body, img,h1,h2,h3,h4,button,p{
     margin:0;
     padding: 0;
+    background-color: white;
 }
 .topOptions{
     display:none;
@@ -88,6 +89,7 @@ h2 span{
     flex-direction: column;
     background-image: url("/Pictures/5153670.jpg");
     background-size: contain;
+    background-color: white;;
 }
 .arrowContainer{
     flex-shrink:0;
@@ -297,4 +299,49 @@ p{
     position: absolute;
     top:-20;
     z-index:200;
+}
+#thirdPage{
+    min-height:100vh;
+    display:flex;
+    flex-direction: column;
+    background-color: white;
+    align-items: center;
+    justify-content: center;
+    flex:1;
+}
+#feedbackSection{
+    
+    width:90%;
+    align-self:center;
+    background-image:url('/Pictures/thirdpage.jpg');
+    background-image: cover;
+    display: flex;
+    flex-direction: column;
+    border-radius:10px;
+}
+.feedBackBackground{
+    margin:5vh 0;
+    min-height:90px;
+    flex-grow:1;
+    max-height:250px;
+    background-color:rgba(255,255,255,0.5);
+    width:90%;
+    align-self: center;
+    border-radius: 10px;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+.feedBackContainer{
+    display:flex;
+    flex-direction: row;
+    width:95%;
+    align-items:center;
+    height:100%;
+    justify-content: space-between;
+}
+.feedback{
+    padding-left:10px;
+    text-wrap:wrap;
+    max-width:500px;
 }
